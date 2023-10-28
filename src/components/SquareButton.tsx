@@ -16,6 +16,7 @@ const StyledButton = styled.button<{ disabled: boolean }>`
   text-align: center;
   color: ${({ disabled }) => (disabled ? '#9bd4e4' : '#00a1d1')};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  background-color: #fff;
 `;
 
 function Button({ disabled, children, onClick }: Props) {
