@@ -1,7 +1,7 @@
 
 # AY Challenge
 
-It's a challenge from AY.
+It's a room management challenge
 
 
 
