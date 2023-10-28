@@ -54,7 +54,8 @@ function CustomInputNumber({
     let newValue = e.target.value;
 
     if (isNaN(parseInt(newValue)) || newValue === '') {
-      newValue = '0';
+      setValueState(min);
+      return;
     }
 
     if (parseInt(newValue) > max) {
