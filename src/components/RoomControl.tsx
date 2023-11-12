@@ -5,6 +5,8 @@ import { RoomGuest } from './RoomAllocation';
 
 type Props = {
   className: string;
+  adultCount: number;
+  childCount: number;
   onChange: (result: RoomGuest, index: number) => void;
   maxGuest: number;
   index: number;
@@ -35,26 +37,21 @@ const Container = styled.div`
 
 function RoomControl({
   className,
+  adultCount,
+  childCount,
   maxGuest,
   onChange,
   index,
   unallocated,
   disabled,
 }: Props) {
-  const [adultCount, setAdultCount] = useState(1);
-  const [childCount, setChildCount] = useState(0);
-
   const handleAdultChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setAdultCount(parseInt(e.target.value));
+    onChange({ adult: parseInt(e.target.value), child: childCount }, index);
   };
 
   const handleChildChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setChildCount(parseInt(e.target.value));
+    onChange({ adult: adultCount, child: parseInt(e.target.value) }, index);
   };
-
-  useEffect(() => {
-    onChange({ adult: adultCount, child: childCount }, index);
-  }, [adultCount, childCount]);
 
   return (
     <Container className={className}>

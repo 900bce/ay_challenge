@@ -41,7 +41,7 @@ const Container = styled.div`
 function RoomAllocation({ guest, room, onChange }: Props) {
   const [unallocated, setUnallocated] = useState(guest);
   const [result, setResult] = useState<Array<RoomGuest>>(
-    Array.from({ length: room }).map((_, i) => ({ adult: 1, child: 0 }))
+    Array.from({ length: room }).map(() => ({ adult: 1, child: 0 }))
   );
 
   const handleChange = (e: RoomGuest, i: number) => {
@@ -67,10 +67,12 @@ function RoomAllocation({ guest, room, onChange }: Props) {
         住客人數：{guest} 人 / {room} 房
       </p>
       <div className="unallocated">尚未分配人數：{unallocated} 人</div>
-      {result.map((_, i) => (
+      {result.map(({ adult, child }, i) => (
         <RoomControl
           key={i}
           className="room-card"
+          adultCount={adult}
+          childCount={child}
           onChange={handleChange}
           index={i}
           unallocated={unallocated}
