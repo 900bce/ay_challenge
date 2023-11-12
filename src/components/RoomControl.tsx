@@ -58,7 +58,7 @@ function RoomControl({
 
   return (
     <Container className={className}>
-      <p className="room-title">房間：{1} 人</p>
+      <p className="room-title">房間：{childCount + adultCount} 人</p>
       <div>
         <div className="adult">
           <div>
